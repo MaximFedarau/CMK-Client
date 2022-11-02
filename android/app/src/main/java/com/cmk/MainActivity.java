@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
-  // need it for react-native-screens
+  // Need it for react-native-screens
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(null);
