@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CMK</string>
+    <string name="launch_screen_description">CMK Logo</string>
 </resources>

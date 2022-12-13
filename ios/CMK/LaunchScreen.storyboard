@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LightLogo" translatesAutoresizingMaskIntoConstraints="NO" id="dCn-yz-US4">
-                                <rect key="frame" x="136.66666666666666" y="295.33333333333331" width="117" height="253.33333333333331"/>
+                                <rect key="frame" x="117" y="253.33333333333334" width="156" height="337.33333333333326"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.24705882352941178" green="0.5490196078431373" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dCn-yz-US4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="B8o-MJ-W85"/>
-                            <constraint firstItem="dCn-yz-US4" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.3" id="RmG-sB-5AJ"/>
+                            <constraint firstItem="dCn-yz-US4" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.4" id="RmG-sB-5AJ"/>
                             <constraint firstItem="dCn-yz-US4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="mei-ef-dF0"/>
-                            <constraint firstItem="dCn-yz-US4" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.3" id="sDn-ZD-XlW"/>
+                            <constraint firstItem="dCn-yz-US4" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.4" id="sDn-ZD-XlW"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LightLogo" width="240" height="240"/>
+        <image name="LightLogo" width="84" height="84"/>
     </resources>
 </document>
