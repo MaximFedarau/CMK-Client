@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
+import React, { useEffect, FC } from 'react';
+import { StatusBar, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 
-const App = () => {
+import Navigator from './src';
+
+const App: FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   useEffect(() => {
@@ -11,10 +13,12 @@ const App = () => {
   }, []);
 
   return (
-    <NavigationContainer>
+    <>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <SafeAreaView />
-    </NavigationContainer>
+      <NavigationContainer>
+        <Navigator />
+      </NavigationContainer>
+    </>
   );
 };
 
