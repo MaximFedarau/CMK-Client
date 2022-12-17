@@ -1,10 +1,37 @@
-// prettier-ignore
 {
-  "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
+  "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
-    /* Visit https://aka.ms/tsconfig.json to read more about this file */
-
-    /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+    "strict": true,
+    "jsx": "react-native",
+    "types": ["node"],
+    "skipLibCheck": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "lib": ["DOM", "ESNext"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "target": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "componets": ["src/components"],
+      "constants/*": ["src/constants/*"],
+      "constants": ["src/constants"],
+      "screens/*": ["src/screens/*"],
+      "screens": ["src/screens"],
+      "navigation/*": ["src/navigation/*"],
+      "navigation": ["src/navigation"],
+      "types/*": ["src/types/*"],
+      "types": ["src/types"],
+      "utils/*": ["src/utils/*"],
+      "utils": ["src/utils"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }
