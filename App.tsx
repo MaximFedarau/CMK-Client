@@ -1,22 +1,24 @@
 import React, { useEffect, FC } from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
+import { ThemeProvider } from 'styled-components/native';
 
 import Navigator from './src';
+import { COLORS, THEME } from '@constants';
 
 const App: FC = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
   useEffect(() => {
     SplashScreen.hide();
   }, []);
 
   return (
     <>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <StatusBar backgroundColor={COLORS.white} barStyle="dark-content" />
       <NavigationContainer>
-        <Navigator />
+        <ThemeProvider theme={THEME}>
+          <Navigator />
+        </ThemeProvider>
       </NavigationContainer>
     </>
   );

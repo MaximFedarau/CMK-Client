@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { AuthStack } from 'navigation';
-import { NavigationName } from 'types';
+import { AuthStack } from '@navigation';
+import { NavigationName } from '@types';
 
 const Stack = createNativeStackNavigator();
 
