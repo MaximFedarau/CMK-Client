@@ -1,16 +1,16 @@
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
+  presets: ['babel-preset-expo'],
   plugins: [
     [
-      require.resolve('babel-plugin-module-resolver'),
+      'module-resolver',
       {
         alias: {
-          'components': './src/components',
-          'constants': './src/constants',
-          'screens': './src/screens',
-          'navigation': './src/navigation',
-          'types': './src/types',
-          'utils': './src/utils',
+          '@components': './src/components',
+          '@constants': './src/constants',
+          '@screens': './src/screens',
+          '@navigation': './src/navigation',
+          '@types': './src/types',
+          '@utils': './src/utils',
         },
       },
     ],
