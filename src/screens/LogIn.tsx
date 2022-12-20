@@ -21,5 +21,7 @@ const styles = StyleSheet.create({
   logoText: {
     fontSize: 20,
     color: '#3F8CFF',
+    fontFamily: 'Poppins-Regular',
+    fontWeight: '400',
   },
 });
