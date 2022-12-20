@@ -1,27 +1,20 @@
 import React, { FC } from 'react';
-import { SafeAreaView, ScrollView, View, Text, StyleSheet } from 'react-native';
 
-import Logo from '@assets/images/logo.svg';
+import {
+  SafeAreaContainer,
+  ContentScrollContainer,
+  Logo,
+  AuthContentContainer,
+  AuthWelcomeText,
+} from '@components';
 
 export const LogIn: FC = () => (
-  <SafeAreaView>
-    <ScrollView>
-      <View style={styles.logoContainer}>
-        <Logo width={48} height={48} />
-        <Text style={styles.logoText}>CMK</Text>
-      </View>
-    </ScrollView>
-  </SafeAreaView>
+  <SafeAreaContainer>
+    <ContentScrollContainer>
+      <Logo />
+      <AuthContentContainer>
+        <AuthWelcomeText>Log In To Woorkroom</AuthWelcomeText>
+      </AuthContentContainer>
+    </ContentScrollContainer>
+  </SafeAreaContainer>
 );
-
-const styles = StyleSheet.create({
-  logoContainer: {
-    alignItems: 'center',
-  },
-  logoText: {
-    fontSize: 20,
-    color: '#3F8CFF',
-    fontFamily: 'Poppins-Regular',
-    fontWeight: '400',
-  },
-});

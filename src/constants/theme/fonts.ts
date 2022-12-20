@@ -1,5 +1,10 @@
 export const FONTS = {
-  families: {},
+  families: {
+    primary: 'Poppins-Regular',
+    primaryMedium: 'Poppins-Medium',
+    primarySemiBold: 'Poppins-SemiBold',
+    primaryBold: 'Poppins-Bold',
+  },
   sizes: {
     xs: 12,
     sm: 14,

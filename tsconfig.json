@@ -15,7 +15,7 @@
     "paths": {
       "@assets/*": ["assets/*"],
       "@components/*": ["src/components/*"],
-      "@componets": ["src/components"],
+      "@components": ["src/components"],
       "@constants/*": ["src/constants/*"],
       "@constants": ["src/constants"],
       "@screens/*": ["src/screens/*"],
