@@ -1,5 +1,6 @@
 export const FONTS = {
   families: {
+    primaryLight: 'Poppins-Light',
     primary: 'Poppins-Regular',
     primaryMedium: 'Poppins-Medium',
     primarySemiBold: 'Poppins-SemiBold',

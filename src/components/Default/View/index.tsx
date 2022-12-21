@@ -20,6 +20,23 @@ export const LogoContainer = styled(Container)`
 `;
 
 export const AuthContentContainer = styled(Container)`
+  width: 85%;
   justify-content: center;
   align-self: center;
+  padding-vertical: ${({ theme }) => theme.sizes['12xl']}px;
+`;
+
+export const AuthInputContainer = styled(Container)`
+  flex: 0;
+  height: ${({ theme }) => theme.sizes['9xl']}px;
+  margin-vertical: ${({ theme }) => theme.sizes['4xl']}px;
+`;
+
+export const AuthInputContentContainer = styled(Container)`
+  flex: none;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  border-bottom-width: ${({ theme }) => theme.sizes.sm / 8}px;
+  border-bottom-color: ${({ theme }) => theme.colors.polar};
 `;
