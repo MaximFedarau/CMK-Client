@@ -12,16 +12,33 @@ export const LogoText = styled(DefaultText)`
   font-family: ${({ theme }) => theme.fonts.families.primaryMedium};
 `;
 
-export const AuthWelcomeText = styled(DefaultText)`
+export const FormHeaderText = styled(DefaultText)`
   text-transform: capitalize;
   text-align: center;
   font-size: ${({ theme }) => theme.fonts.sizes['2xl']}px;
   font-family: ${({ theme }) => theme.fonts.families.primaryMedium};
 `;
 
-export const AuthInputLabel = styled(DefaultText)`
+export const FormLabel = styled(DefaultText)`
   color: ${({ theme }) => theme.colors.gray};
   font-family: ${({ theme }) => theme.fonts.families.primaryLight};
   font-size: ${({ theme }) => theme.fonts.sizes.sm}px;
   text-transform: capitalize;
+`;
+
+export const FormFieldAdditionalLabel = styled(FormLabel)`
+  text-align: right;
+  text-transform: none;
+  margin-top: ${({ theme }) => theme.sizes.md}px;
+`;
+
+export const SubmitButtonText = styled(DefaultText)`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.fonts.sizes.lg}px;
+  font-family: ${({ theme }) => theme.fonts.families.primary};
+`;
+
+export const AuthFormButtonsNavigationText = styled(FormLabel)`
+  color: ${({ theme }) => theme.colors.blue};
+  font-family: ${({ theme }) => theme.fonts.families.primarySemiBold};
 `;

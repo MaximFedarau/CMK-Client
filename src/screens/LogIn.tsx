@@ -4,10 +4,12 @@ import { Formik } from 'formik';
 import {
   ContentScrollContainer,
   Logo,
-  AuthContentContainer,
-  AuthWelcomeText,
+  FormContentContainer,
+  FormHeaderText,
   FormField,
+  AuthFormButtons,
 } from '@components';
+import { NavigationAuthName } from '@types';
 
 interface InitalValues {
   email: string;
@@ -20,17 +22,21 @@ export const LogIn: FC = () => {
     password: '',
   };
 
+  const restorePassword = () => {
+    console.log('Restore password!');
+  };
+
   const onSubmit = (values: InitalValues) => {
     console.log(values);
   };
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      {({ values: { email, password }, handleChange }) => (
+      {({ values: { email, password }, handleChange, handleSubmit }) => (
         <ContentScrollContainer>
           <Logo />
-          <AuthContentContainer>
-            <AuthWelcomeText>Log In To Woorkroom</AuthWelcomeText>
+          <FormContentContainer>
+            <FormHeaderText>Log In To Woorkroom</FormHeaderText>
             <FormField
               value={email}
               onChangeText={handleChange('email')}
@@ -42,10 +48,19 @@ export const LogIn: FC = () => {
               value={password}
               onChangeText={handleChange('password')}
               labelText="Password"
+              additionalLabelText="Forgot password?"
+              onAdditionalLabelPress={restorePassword}
               secureTextEntry
               isPasswordInput
+              autoCapitalize="none"
             />
-          </AuthContentContainer>
+            <AuthFormButtons
+              type={NavigationAuthName.LOG_IN}
+              onSubmit={handleSubmit}
+            >
+              Log In
+            </AuthFormButtons>
+          </FormContentContainer>
         </ContentScrollContainer>
       )}
     </Formik>

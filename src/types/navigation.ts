@@ -1,3 +1,16 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
+
+type RootStackParamList = {
+  [NavigationName.AUTH]: undefined;
+} & AuthNavigationRootStackParamList;
+
+type AuthNavigationRootStackParamList = {
+  [NavigationAuthName.LOG_IN]: undefined;
+  [NavigationAuthName.SIGN_UP]: undefined;
+};
+
 export enum NavigationName {
   AUTH = 'Auth',
 }

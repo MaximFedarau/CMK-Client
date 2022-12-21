@@ -14,6 +14,7 @@ export const ContentScrollContainer: FC<ScrollViewProps> = ({
       <ScrollContainer
         {...props}
         bounces={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}
       >
         {children}

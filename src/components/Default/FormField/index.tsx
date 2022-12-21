@@ -3,10 +3,11 @@ import { TextInputProps, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
-  AuthInputLabel,
-  AuthInput,
-  AuthInputContainer,
-  AuthInputContentContainer,
+  FormLabel,
+  FormFieldAdditionalLabel,
+  FormFieldInput,
+  FormFieldContainer,
+  FormFieldInputContainer,
   SecureTextButton,
 } from '@components';
 import { SIZES } from '@constants/theme';
@@ -15,11 +16,15 @@ import ClosedEyeIcon from '@assets/images/closedEye.svg';
 
 interface Props extends TextInputProps {
   labelText: string;
+  additionalLabelText?: string;
+  onAdditionalLabelPress?: () => void;
   isPasswordInput?: boolean;
 }
 
 export const FormField: FC<Props> = ({
   labelText,
+  additionalLabelText,
+  onAdditionalLabelPress,
   isPasswordInput,
   ...props
 }) => {
@@ -31,10 +36,10 @@ export const FormField: FC<Props> = ({
   const changeSecureText = () => setSecureText(!secureText);
 
   return (
-    <AuthInputContainer>
-      <AuthInputLabel>{labelText}</AuthInputLabel>
-      <AuthInputContentContainer>
-        <AuthInput
+    <FormFieldContainer>
+      <FormLabel>{labelText}</FormLabel>
+      <FormFieldInputContainer>
+        <FormFieldInput
           {...props}
           secureTextEntry={secureText}
           style={{
@@ -48,7 +53,12 @@ export const FormField: FC<Props> = ({
             {secureText ? <ClosedEyeIcon /> : <EyeIcon />}
           </SecureTextButton>
         )}
-      </AuthInputContentContainer>
-    </AuthInputContainer>
+      </FormFieldInputContainer>
+      {additionalLabelText && (
+        <FormFieldAdditionalLabel onPress={onAdditionalLabelPress}>
+          {additionalLabelText}
+        </FormFieldAdditionalLabel>
+      )}
+    </FormFieldContainer>
   );
 };

@@ -6,8 +6,7 @@ export const DefaultInput = styled(TextInput)`
   color: ${({ theme }) => theme.colors.black};
 `;
 
-export const AuthInput = styled(DefaultInput)`
-  width: 100%;
+export const FormFieldInput = styled(DefaultInput)`
   height: 100%;
   font-size: ${({ theme }) => theme.fonts.sizes.lg}px;
   font-family: ${({ theme }) => theme.fonts.families.primary};
