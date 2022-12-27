@@ -4,6 +4,7 @@ import {
   ContentScrollContainer,
   Logo,
   FormContentContainer,
+  AuthPhoneField,
   AuthFormButtons,
 } from '@components';
 import { NavigationAuthName } from '@types';
@@ -17,6 +18,7 @@ export const SignUp: FC = () => {
     <ContentScrollContainer>
       <Logo />
       <FormContentContainer>
+        <AuthPhoneField />
         <AuthFormButtons type={NavigationAuthName.SIGN_UP} onSubmit={onSubmit}>
           Next
         </AuthFormButtons>

@@ -17,3 +17,14 @@ export const SubmitButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `;
+
+export const AuthCountryCodeButton = styled.Pressable`
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: ${({ theme }) => theme.sizes['26xl']}px;
+  padding: ${({ theme }) => theme.sizes.lg}px;
+  border-width: ${({ theme }) => theme.sizes.sm / 4}px;
+  border-color: ${({ theme }) => theme.colors.polar};
+  border-radius: ${({ theme }) => theme.sizes.lg}px;
+`;

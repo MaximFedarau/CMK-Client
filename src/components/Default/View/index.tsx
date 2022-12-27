@@ -34,7 +34,7 @@ export const FormFieldContainer = styled(Container)`
 export const FormFieldInputContainer = styled(Container)`
   height: ${({ theme }) => theme.sizes['12xl']}px;
   flex-direction: row;
-  border-bottom-width: ${({ theme }) => theme.sizes.sm / 8}px;
+  border-bottom-width: ${({ theme }) => theme.sizes.sm / 4}px;
   border-bottom-color: ${({ theme }) => theme.colors.polar};
 `;
 
@@ -48,4 +48,13 @@ export const AuthFormButtonsTextContainer = styled(Container)`
   flex-direction: row;
   justify-content: center;
   margin-top: ${({ theme }) => theme.sizes['4xl']}px;
+`;
+
+export const AuthPhoneFieldContainer = styled(Container)`
+  flex: 0;
+`;
+
+export const AuthPhoneFieldInputContainer = styled(Container)`
+  flex-direction: row;
+  margin-top: ${({ theme }) => theme.sizes.lg}px;
 `;
