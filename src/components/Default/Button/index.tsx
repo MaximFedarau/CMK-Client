@@ -28,3 +28,8 @@ export const AuthCountryCodeButton = styled.Pressable`
   border-color: ${({ theme }) => theme.colors.polar};
   border-radius: ${({ theme }) => theme.sizes.lg}px;
 `;
+
+export const BackButtonPressable = styled.Pressable`
+  width: ${({ theme }) => theme.sizes['2xl']}px;
+  height: ${({ theme }) => theme.sizes['2xl']}px;
+`;
