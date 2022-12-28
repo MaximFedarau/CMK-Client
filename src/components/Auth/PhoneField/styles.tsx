@@ -11,4 +11,7 @@ export const styles = StyleSheet.create({
     width: SIZES['2xl'],
     height: SIZES['2xl'],
   },
+  phoneNumberInput: {
+    includeFontPadding: false,
+  },
 });

@@ -52,6 +52,7 @@ export const AuthFormButtonsTextContainer = styled(Container)`
 
 export const AuthPhoneFieldContainer = styled(Container)`
   flex: 0;
+  margin-top: ${({ theme }) => theme.sizes['7xl']}px;
 `;
 
 export const AuthPhoneFieldInputContainer = styled(Container)`

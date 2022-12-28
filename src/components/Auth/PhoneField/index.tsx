@@ -6,6 +6,7 @@ import {
   AuthPhoneFieldInputContainer,
   AuthCountryCodeButton,
   AuthCountryCodeButtonText,
+  AuthPhoneNumberInput,
 } from '@components/Default';
 import ChevronRight from '@assets/images/chevronRight.svg';
 
@@ -22,6 +23,10 @@ export const AuthPhoneField: FC = () => {
           </AuthCountryCodeButtonText>
           <ChevronRight style={styles.countryCodeButtonChevron} />
         </AuthCountryCodeButton>
+        <AuthPhoneNumberInput
+          keyboardType="number-pad"
+          style={styles.phoneNumberInput}
+        />
       </AuthPhoneFieldInputContainer>
     </AuthPhoneFieldContainer>
   );

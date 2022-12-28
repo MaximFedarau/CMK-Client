@@ -46,6 +46,7 @@ export const FormField: FC<Props> = ({
             width: isPasswordInput
               ? (width - insets.left - insets.right) * 0.85 - SIZES['3xl'] // (width of the whole screen - SafeAreaView insets) * 85% (85% * Screen width = Form content width) - SIZES['3xl'] (width of the icon) = width of the input - width of the icon
               : '100%', // default width
+            includeFontPadding: false,
           }}
         />
         {isPasswordInput && (

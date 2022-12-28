@@ -12,3 +12,15 @@ export const FormFieldInput = styled(DefaultInput)`
   font-family: ${({ theme }) => theme.fonts.families.primary};
   color: ${({ theme }) => theme.colors.black};
 `;
+
+export const AuthPhoneNumberInput = styled(DefaultInput)`
+  flex: 1;
+  margin-left: ${({ theme }) => theme.sizes.xl}px;
+  padding-horizontal: ${({ theme }) => theme.sizes.lg}px;
+  border-width: ${({ theme }) => theme.sizes.sm / 4}px;
+  border-color: ${({ theme }) => theme.colors.polar};
+  border-radius: ${({ theme }) => theme.sizes.lg}px;
+  color: ${({ theme }) => theme.colors.gray};
+  font-size: ${({ theme }) => theme.fonts.sizes.lg}px;
+  font-family: ${({ theme }) => theme.fonts.families.primary};
+`;
