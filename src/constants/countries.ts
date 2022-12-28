@@ -1,4 +1,8 @@
-export const COUNTRIES = {
+import { Countries, CountryInfo } from '@types';
+
+export const COUNTRIES_INFO: {
+  [key in Countries]: CountryInfo;
+} = {
   BY: {
     name: 'Belarus',
     code: '+375',

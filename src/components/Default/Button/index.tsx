@@ -18,7 +18,7 @@ export const SubmitButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export const AuthCountryCodeButton = styled.Pressable`
+export const AuthCountryCodeDisplayButton = styled.Pressable`
   align-items: center;
   justify-content: center;
   flex-direction: row;
@@ -32,4 +32,12 @@ export const AuthCountryCodeButton = styled.Pressable`
 export const BackButtonPressable = styled.Pressable`
   width: ${({ theme }) => theme.sizes['2xl']}px;
   height: ${({ theme }) => theme.sizes['2xl']}px;
+`;
+
+export const AuthCountryCodeSelectButton = styled.Pressable`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: ${({ theme }) => theme.sizes['10xl']}px;
+  padding-horizontal: ${({ theme }) => theme.sizes['4xl']}px;
 `;

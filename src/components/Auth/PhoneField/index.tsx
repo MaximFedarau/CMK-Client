@@ -5,8 +5,8 @@ import {
   AuthPhoneFieldContainer,
   FormLabel,
   AuthPhoneFieldInputContainer,
-  AuthCountryCodeButton,
-  AuthCountryCodeButtonText,
+  AuthCountryCodeDisplayButton,
+  AuthCountryCodeDisplayButtonText,
   AuthPhoneNumberInput,
 } from '@components';
 import { NavigationAuthName, NavigationProps } from '@types';
@@ -24,12 +24,14 @@ export const AuthPhoneField: FC = () => {
     <AuthPhoneFieldContainer>
       <FormLabel>Phone Number</FormLabel>
       <AuthPhoneFieldInputContainer>
-        <AuthCountryCodeButton onPress={selectCountryCode}>
-          <AuthCountryCodeButtonText style={styles.countryCodeButtonText}>
+        <AuthCountryCodeDisplayButton onPress={selectCountryCode}>
+          <AuthCountryCodeDisplayButtonText
+            style={styles.countryCodeButtonText}
+          >
             +1234
-          </AuthCountryCodeButtonText>
+          </AuthCountryCodeDisplayButtonText>
           <ChevronRight style={styles.countryCodeButtonChevron} />
-        </AuthCountryCodeButton>
+        </AuthCountryCodeDisplayButton>
         <AuthPhoneNumberInput
           keyboardType="number-pad"
           style={styles.phoneNumberInput}

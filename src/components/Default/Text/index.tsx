@@ -43,8 +43,17 @@ export const AuthFormButtonsNavigationText = styled(FormLabel)`
   font-family: ${({ theme }) => theme.fonts.families.primarySemiBold};
 `;
 
-export const AuthCountryCodeButtonText = styled(DefaultText)`
+export const AuthCountryCodeDisplayButtonText = styled(DefaultText)`
   font-size: ${({ theme }) => theme.fonts.sizes.lg}px;
   font-family: ${({ theme }) => theme.fonts.families.primarySemiBold};
   color: ${({ theme }) => theme.colors.gray};
+`;
+
+export const AuthCountryCodeCountryText = styled(DefaultText)`
+  font-family: ${({ theme }) => theme.fonts.families.primary};
+`;
+
+export const AuthCountryCodeCodeText = styled(DefaultText)`
+  color: ${({ theme }) => theme.colors.blue};
+  font-family: ${({ theme }) => theme.fonts.families.primaryMedium};
 `;
