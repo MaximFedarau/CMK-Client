@@ -11,14 +11,16 @@ import {
 } from '@components';
 import { NavigationAuthName, NavigationProps } from '@types';
 
+type AuthName = NavigationAuthName.LOG_IN | NavigationAuthName.SIGN_UP;
+
 interface Props {
   children: string;
   onSubmit: () => void;
-  type: NavigationAuthName;
+  type: AuthName;
 }
 
 const NAVIGATION_INFO: {
-  [key in NavigationAuthName]: {
+  [key in AuthName]: {
     infoText: string;
     linkText: string;
     link: NavigationAuthName;

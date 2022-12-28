@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { LogIn, SignUp } from '@screens';
+import { LogIn, SignUp, CountryCodeSelection } from '@screens';
 import { COLORS } from '@constants';
 import { NavigationAuthName } from '@types';
 
@@ -16,5 +16,10 @@ export const AuthStack: FC = () => (
   >
     <Stack.Screen name={NavigationAuthName.LOG_IN} component={LogIn} />
     <Stack.Screen name={NavigationAuthName.SIGN_UP} component={SignUp} />
+    <Stack.Screen
+      name={NavigationAuthName.COUNTRY_CODE_SELECTION}
+      component={CountryCodeSelection}
+      options={{ headerShown: true, title: 'Select a country' }}
+    />
   </Stack.Navigator>
 );

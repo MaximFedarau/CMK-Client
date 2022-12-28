@@ -9,6 +9,7 @@ type RootStackParamList = {
 type AuthNavigationRootStackParamList = {
   [NavigationAuthName.LOG_IN]: undefined;
   [NavigationAuthName.SIGN_UP]: undefined;
+  [NavigationAuthName.COUNTRY_CODE_SELECTION]: undefined;
 };
 
 export enum NavigationName {
@@ -18,4 +19,5 @@ export enum NavigationName {
 export enum NavigationAuthName {
   LOG_IN = 'LogIn',
   SIGN_UP = 'SignUp',
+  COUNTRY_CODE_SELECTION = 'CountryCodeSelection',
 }
