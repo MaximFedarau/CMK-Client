@@ -1,4 +1,8 @@
-export type Countries = 'BY' | 'RU' | 'US';
+export enum Countries {
+  BY = 'BY',
+  RU = 'RU',
+  US = 'US',
+}
 
 export interface CountryInfo {
   name: string;

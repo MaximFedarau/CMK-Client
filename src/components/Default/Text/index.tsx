@@ -53,7 +53,7 @@ export const AuthCountryCodeCountryText = styled(DefaultText)`
   font-family: ${({ theme }) => theme.fonts.families.primary};
 `;
 
-export const AuthCountryCodeCodeText = styled(DefaultText)`
+export const AuthCountryCodeNumberText = styled(DefaultText)`
   color: ${({ theme }) => theme.colors.blue};
   font-family: ${({ theme }) => theme.fonts.families.primaryMedium};
 `;

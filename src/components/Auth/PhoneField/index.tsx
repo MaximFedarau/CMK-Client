@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 import {
   AuthPhoneFieldContainer,
@@ -9,6 +10,7 @@ import {
   AuthCountryCodeDisplayButtonText,
   AuthPhoneNumberInput,
 } from '@components';
+import { countryCodeSelector } from '@store/countryCode';
 import { NavigationAuthName, NavigationProps } from '@types';
 import ChevronRight from '@assets/images/chevronRight.svg';
 
@@ -16,6 +18,7 @@ import { styles } from './styles';
 
 export const AuthPhoneField: FC = () => {
   const navigation = useNavigation<NavigationProps>();
+  const countryCode = useSelector(countryCodeSelector);
 
   const selectCountryCode = () =>
     navigation.navigate(NavigationAuthName.COUNTRY_CODE_SELECTION);
@@ -28,7 +31,7 @@ export const AuthPhoneField: FC = () => {
           <AuthCountryCodeDisplayButtonText
             style={styles.countryCodeButtonText}
           >
-            +1234
+            {countryCode}
           </AuthCountryCodeDisplayButtonText>
           <ChevronRight style={styles.countryCodeButtonChevron} />
         </AuthCountryCodeDisplayButton>
