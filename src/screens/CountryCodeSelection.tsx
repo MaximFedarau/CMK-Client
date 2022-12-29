@@ -7,9 +7,9 @@ import { Countries } from '@types';
 
 export const CountryCodeSelection: FC = () => (
   <FlatList
-    data={Object.keys(COUNTRIES_INFO)}
+    data={Object.keys(COUNTRIES_INFO) as Countries[]}
     renderItem={({ item }) => (
-      <AuthCountryCode {...COUNTRIES_INFO[item as Countries]} />
+      <AuthCountryCode {...COUNTRIES_INFO[item]} countryId={item} />
     )}
   />
 );

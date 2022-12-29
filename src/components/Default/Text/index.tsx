@@ -49,11 +49,28 @@ export const AuthCountryCodeDisplayButtonText = styled(DefaultText)`
   color: ${({ theme }) => theme.colors.gray};
 `;
 
-export const AuthCountryCodeCountryText = styled(DefaultText)`
+export const AuthCountryCodeLocationText = styled(DefaultText)`
   font-family: ${({ theme }) => theme.fonts.families.primary};
 `;
 
 export const AuthCountryCodeNumberText = styled(DefaultText)`
   color: ${({ theme }) => theme.colors.blue};
   font-family: ${({ theme }) => theme.fonts.families.primaryMedium};
+`;
+
+export const ModalTitle = styled(DefaultText)`
+  font-family: ${({ theme }) => theme.fonts.families.primaryMedium};
+  margin-bottom: ${({ theme }) => theme.sizes.sm}px;
+`;
+
+export const ModalContentText = styled(DefaultText)`
+  font-family: ${({ theme }) => theme.fonts.families.primary};
+  font-size: ${({ theme }) => theme.fonts.sizes.sm}px;
+  margin-bottom: ${({ theme }) => theme.sizes['5xl']}px;
+`;
+
+export const ModalCloseButtonText = styled(DefaultText)`
+  font-family: ${({ theme }) => theme.fonts.families.primaryMedium};
+  color: ${({ theme }) => theme.colors.blue};
+  align-self: center;
 `;

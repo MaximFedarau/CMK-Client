@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import { countryCodeSlice } from './countryCode';
+import { countryIdSlice } from './countryId';
 
 export const rootReducer = combineReducers({
-  countryCode: countryCodeSlice.reducer,
+  countryId: countryIdSlice.reducer,
 });

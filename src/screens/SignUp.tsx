@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
 import {
   ContentScrollContainer,
@@ -7,12 +9,38 @@ import {
   FormHeaderText,
   AuthPhoneField,
   AuthFormButtons,
+  Modal,
 } from '@components';
+import { countryIdSelector } from '@store/countryId';
+import { COUNTRIES_INFO } from '@constants';
 import { NavigationAuthName } from '@types';
 
+const MODAL_INITIAL_STATE = {
+  visible: false,
+  title: '',
+  children: '',
+  closeButtonText: '',
+};
+
 export const SignUp: FC = () => {
-  const onSubmit = () => {
-    console.log('onSubmit');
+  const countryId = useSelector(countryIdSelector);
+  const countryCode = COUNTRIES_INFO[countryId].code;
+
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [modalParams, setModalParams] = useState(MODAL_INITIAL_STATE);
+
+  const onCloseModal = () => setModalParams(MODAL_INITIAL_STATE);
+
+  const onValidatePhoneNumber = () => {
+    const tel = countryCode + phoneNumber.trim();
+    const phoneNumberValidity = isValidPhoneNumber(tel, countryId);
+    if (!phoneNumberValidity)
+      setModalParams({
+        visible: true,
+        title: 'Sorry',
+        children: 'Invalid phone number. Check it out and try again.',
+        closeButtonText: 'OK',
+      });
   };
 
   return (
@@ -20,10 +48,18 @@ export const SignUp: FC = () => {
       <Logo />
       <FormContentContainer>
         <FormHeaderText>Sign Up To Woorkroom</FormHeaderText>
-        <AuthPhoneField />
-        <AuthFormButtons type={NavigationAuthName.SIGN_UP} onSubmit={onSubmit}>
+        <AuthPhoneField
+          countryCode={countryCode}
+          phoneNumber={phoneNumber}
+          onPhoneNumberChange={setPhoneNumber}
+        />
+        <AuthFormButtons
+          type={NavigationAuthName.SIGN_UP}
+          onSubmit={onValidatePhoneNumber}
+        >
           Next
         </AuthFormButtons>
+        <Modal {...modalParams} onRequestClose={onCloseModal} />
       </FormContentContainer>
     </ContentScrollContainer>
   );

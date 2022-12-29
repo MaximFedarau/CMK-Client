@@ -59,3 +59,12 @@ export const AuthPhoneFieldInputContainer = styled(Container)`
   flex-direction: row;
   margin-top: ${({ theme }) => theme.sizes.lg}px;
 `;
+
+export const ModalContentContainer = styled(Container)`
+  flex: none;
+  width: 85%;
+  max-width: ${({ theme }) => theme.sizes['26xl'] * 3}px;
+  padding: ${({ theme }) => theme.sizes['2xl']}px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.sizes.sm}px;
+`;

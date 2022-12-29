@@ -41,3 +41,14 @@ export const AuthCountryCodeSelectButton = styled.Pressable`
   height: ${({ theme }) => theme.sizes['10xl']}px;
   padding-horizontal: ${({ theme }) => theme.sizes['4xl']}px;
 `;
+
+export const ModalContainerButton = styled.Pressable`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.32);
+`;
+
+export const ModalCloseButton = styled.TouchableOpacity`
+  align-self: flex-end;
+`;

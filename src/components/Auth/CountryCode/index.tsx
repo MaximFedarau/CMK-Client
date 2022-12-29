@@ -4,31 +4,35 @@ import { useDispatch } from 'react-redux';
 
 import {
   AuthCountryCodeSelectButton,
-  AuthCountryCodeCountryText,
+  AuthCountryCodeLocationText,
   AuthCountryCodeNumberText,
 } from '@components';
-import { setCountryCode } from '@store/countryCode';
-import { CountryInfo, NavigationProps } from '@types';
+import { setCountryId } from '@store/countryId';
+import { Countries, CountryInfo, NavigationProps } from '@types';
 
 import { styles } from './styles';
 
-export const AuthCountryCode: FC<CountryInfo> = ({ name, code }) => {
+interface Props extends CountryInfo {
+  countryId: Countries;
+}
+
+export const AuthCountryCode: FC<Props> = ({ countryId, name, code }) => {
   const navigation = useNavigation<NavigationProps>();
   const dispatch = useDispatch();
 
-  const selectCountryCode = () => {
-    dispatch(setCountryCode(code));
+  const selectCountryId = () => {
+    dispatch(setCountryId(countryId));
     navigation.goBack();
   };
 
   return (
     <AuthCountryCodeSelectButton
       style={({ pressed }) => [pressed ? styles.pressed : {}]}
-      onPress={selectCountryCode}
+      onPress={selectCountryId}
     >
-      <AuthCountryCodeCountryText style={styles.text}>
+      <AuthCountryCodeLocationText style={styles.text}>
         {name}
-      </AuthCountryCodeCountryText>
+      </AuthCountryCodeLocationText>
       <AuthCountryCodeNumberText style={styles.text}>
         {code}
       </AuthCountryCodeNumberText>
