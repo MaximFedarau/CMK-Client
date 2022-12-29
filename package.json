@@ -15,6 +15,7 @@
     "@react-navigation/native-stack": "^6.9.1",
     "@reduxjs/toolkit": "^1.9.1",
     "formik": "^2.2.9",
+    "libphonenumber-js": "^1.10.15",
     "react": "18.1.0",
     "react-native": "0.70.6",
     "react-native-safe-area-context": "^4.4.1",
