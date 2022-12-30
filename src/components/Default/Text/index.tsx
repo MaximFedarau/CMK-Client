@@ -46,7 +46,7 @@ export const AuthFormButtonsNavigationText = styled(FormLabel)`
 export const AuthCountryCodeDisplayButtonText = styled(DefaultText)`
   font-size: ${({ theme }) => theme.fonts.sizes.lg}px;
   font-family: ${({ theme }) => theme.fonts.families.primarySemiBold};
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const AuthCountryCodeLocationText = styled(DefaultText)`

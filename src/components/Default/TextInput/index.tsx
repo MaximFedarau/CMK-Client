@@ -20,7 +20,8 @@ export const AuthPhoneNumberInput = styled(DefaultInput)`
   border-width: ${({ theme }) => theme.sizes.sm / 4}px;
   border-color: ${({ theme }) => theme.colors.polar};
   border-radius: ${({ theme }) => theme.sizes.lg}px;
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme, editable }) =>
+    editable ? theme.colors.black : theme.colors.gray};
   font-size: ${({ theme }) => theme.fonts.sizes.lg}px;
   font-family: ${({ theme }) => theme.fonts.families.primary};
 `;

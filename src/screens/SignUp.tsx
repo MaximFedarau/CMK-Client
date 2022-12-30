@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import { isValidPhoneNumber } from 'libphonenumber-js';
 
@@ -28,10 +29,11 @@ export const SignUp: FC = () => {
 
   const [phoneNumber, setPhoneNumber] = useState('');
   const [modalParams, setModalParams] = useState(MODAL_INITIAL_STATE);
+  const [showSignUpSecondStep, setShowSignUpSecondStep] = useState(false);
 
   const onCloseModal = () => setModalParams(MODAL_INITIAL_STATE);
 
-  const onValidatePhoneNumber = () => {
+  const onSignUpFirstStepSubmit = () => {
     const tel = countryCode + phoneNumber.trim();
     const phoneNumberValidity = isValidPhoneNumber(tel, countryId);
     if (!phoneNumberValidity)
@@ -41,6 +43,7 @@ export const SignUp: FC = () => {
         children: 'Invalid phone number. Check it out and try again.',
         closeButtonText: 'OK',
       });
+    else setShowSignUpSecondStep(true);
   };
 
   return (
@@ -52,10 +55,16 @@ export const SignUp: FC = () => {
           countryCode={countryCode}
           phoneNumber={phoneNumber}
           onPhoneNumberChange={setPhoneNumber}
+          disabled={showSignUpSecondStep}
         />
+        {showSignUpSecondStep && (
+          <>
+            <Text>Next Step</Text>
+          </>
+        )}
         <AuthFormButtons
           type={NavigationAuthName.SIGN_UP}
-          onSubmit={onValidatePhoneNumber}
+          onSubmit={onSignUpFirstStepSubmit}
         >
           Next
         </AuthFormButtons>

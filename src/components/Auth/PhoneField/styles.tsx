@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { SIZES } from '@constants/theme';
+import { SIZES, COLORS } from '@constants';
 
 export const styles = StyleSheet.create({
   countryCodeButtonText: {
@@ -13,5 +13,8 @@ export const styles = StyleSheet.create({
   },
   phoneNumberInput: {
     includeFontPadding: false,
+  },
+  disabledText: {
+    color: COLORS.gray,
   },
 });

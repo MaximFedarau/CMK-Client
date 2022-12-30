@@ -9,6 +9,7 @@ import {
   AuthCountryCodeDisplayButtonText,
   AuthPhoneNumberInput,
 } from '@components';
+import { COLORS } from '@constants';
 import { NavigationAuthName, NavigationProps } from '@types';
 import ChevronRight from '@assets/images/chevronRight.svg';
 
@@ -18,12 +19,14 @@ interface Props {
   countryCode: string;
   phoneNumber: string;
   onPhoneNumberChange: (newPhoneNumber: string) => void;
+  disabled?: boolean;
 }
 
 export const AuthPhoneField: FC<Props> = ({
   countryCode,
   phoneNumber,
   onPhoneNumberChange,
+  disabled,
 }) => {
   const navigation = useNavigation<NavigationProps>();
 
@@ -34,19 +37,29 @@ export const AuthPhoneField: FC<Props> = ({
     <AuthPhoneFieldContainer>
       <FormLabel>Phone Number</FormLabel>
       <AuthPhoneFieldInputContainer>
-        <AuthCountryCodeDisplayButton onPress={selectCountryCode}>
+        <AuthCountryCodeDisplayButton
+          disabled={disabled}
+          onPress={selectCountryCode}
+        >
           <AuthCountryCodeDisplayButtonText
-            style={styles.countryCodeButtonText}
+            style={[
+              styles.countryCodeButtonText,
+              disabled && styles.disabledText,
+            ]}
           >
             {countryCode}
           </AuthCountryCodeDisplayButtonText>
-          <ChevronRight style={styles.countryCodeButtonChevron} />
+          <ChevronRight
+            stroke={disabled ? COLORS.gray : COLORS.blue}
+            style={styles.countryCodeButtonChevron}
+          />
         </AuthCountryCodeDisplayButton>
         <AuthPhoneNumberInput
           keyboardType="number-pad"
           style={styles.phoneNumberInput}
           value={phoneNumber}
           onChangeText={onPhoneNumberChange}
+          editable={!disabled}
         />
       </AuthPhoneFieldInputContainer>
     </AuthPhoneFieldContainer>
