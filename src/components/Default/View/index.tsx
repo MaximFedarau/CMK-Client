@@ -32,7 +32,7 @@ export const FormFieldContainer = styled(Container)`
 `;
 
 export const FormFieldInputContainer = styled(Container)`
-  height: ${({ theme }) => theme.sizes['12xl']}px;
+  height: ${({ theme }) => theme.sizes['10xl']}px;
   flex-direction: row;
   border-bottom-width: ${({ theme }) => theme.sizes.sm / 4}px;
   border-bottom-color: ${({ theme }) => theme.colors.polar};

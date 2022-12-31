@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import { Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import { isValidPhoneNumber } from 'libphonenumber-js';
+import { Formik } from 'formik';
 
 import {
   ContentScrollContainer,
@@ -11,27 +12,41 @@ import {
   AuthPhoneField,
   AuthFormButtons,
   Modal,
+  FormField,
 } from '@components';
 import { countryIdSelector } from '@store/countryId';
 import { COUNTRIES_INFO } from '@constants';
 import { NavigationAuthName } from '@types';
 
-const MODAL_INITIAL_STATE = {
-  visible: false,
-  title: '',
-  children: '',
-  closeButtonText: '',
-};
+interface InitialValues {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export const SignUp: FC = () => {
   const countryId = useSelector(countryIdSelector);
   const countryCode = COUNTRIES_INFO[countryId].code;
 
+  const modalInitialState = {
+    visible: false,
+    title: '',
+    children: '',
+    closeButtonText: '',
+  };
+  const initialValues: InitialValues = {
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  };
+
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [modalParams, setModalParams] = useState(MODAL_INITIAL_STATE);
+  const [modalParams, setModalParams] = useState(modalInitialState);
   const [showSignUpSecondStep, setShowSignUpSecondStep] = useState(false);
 
-  const onCloseModal = () => setModalParams(MODAL_INITIAL_STATE);
+  const onCloseModal = () => setModalParams(modalInitialState);
 
   const onSignUpFirstStepSubmit = () => {
     const tel = countryCode + phoneNumber.trim();
@@ -46,30 +61,71 @@ export const SignUp: FC = () => {
     else setShowSignUpSecondStep(true);
   };
 
+  const onSignUpSecondStepSubmit = (values: InitialValues) => {
+    console.log(values);
+  };
+
   return (
-    <ContentScrollContainer>
-      <Logo />
-      <FormContentContainer>
-        <FormHeaderText>Sign Up To Woorkroom</FormHeaderText>
-        <AuthPhoneField
-          countryCode={countryCode}
-          phoneNumber={phoneNumber}
-          onPhoneNumberChange={setPhoneNumber}
-          disabled={showSignUpSecondStep}
-        />
-        {showSignUpSecondStep && (
-          <>
-            <Text>Next Step</Text>
-          </>
-        )}
-        <AuthFormButtons
-          type={NavigationAuthName.SIGN_UP}
-          onSubmit={onSignUpFirstStepSubmit}
-        >
-          Next
-        </AuthFormButtons>
-        <Modal {...modalParams} onRequestClose={onCloseModal} />
-      </FormContentContainer>
-    </ContentScrollContainer>
+    <Formik initialValues={initialValues} onSubmit={onSignUpSecondStepSubmit}>
+      {({
+        values: { name, email, password, confirmPassword },
+        handleChange,
+        handleSubmit,
+      }) => (
+        <ContentScrollContainer>
+          <Logo />
+          <FormContentContainer>
+            <FormHeaderText>Sign Up To Woorkroom</FormHeaderText>
+            <AuthPhoneField
+              countryCode={countryCode}
+              phoneNumber={phoneNumber}
+              onPhoneNumberChange={setPhoneNumber}
+              disabled={showSignUpSecondStep}
+            />
+            {showSignUpSecondStep && (
+              <>
+                <FormField
+                  value={name}
+                  labelText="Your Name"
+                  onChangeText={handleChange('name')}
+                />
+                <FormField
+                  value={email}
+                  labelText="Your Email"
+                  onChangeText={handleChange('email')}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                />
+                <FormField
+                  value={password}
+                  labelText="Password"
+                  onChangeText={handleChange('password')}
+                  secureTextEntry
+                  isPasswordInput
+                  autoCapitalize="none"
+                />
+                <FormField
+                  value={confirmPassword}
+                  labelText="Confirm Password"
+                  onChangeText={handleChange('confirmPassword')}
+                  secureTextEntry
+                  isPasswordInput
+                  autoCapitalize="none"
+                />
+              </>
+            )}
+            <AuthFormButtons
+              type={NavigationAuthName.SIGN_UP}
+              onSubmit={
+                showSignUpSecondStep ? handleSubmit : onSignUpFirstStepSubmit
+              }
+            >
+              Next
+            </AuthFormButtons>
+            <Modal {...modalParams} onRequestClose={onCloseModal} />
+          </FormContentContainer>
+        </ContentScrollContainer>
+      )}
+    </Formik>
   );
 };
