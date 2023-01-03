@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Animated } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -36,6 +37,11 @@ export const FormFieldInputContainer = styled(Container)`
   flex-direction: row;
   border-bottom-width: ${({ theme }) => theme.sizes.sm / 4}px;
   border-bottom-color: ${({ theme }) => theme.colors.polar};
+`;
+
+export const AnimatedFormLabelContainer = styled(Animated.View)`
+  position: absolute;
+  z-index: 1;
 `;
 
 export const AuthFormButtonsContainer = styled(Container)`

@@ -1,4 +1,5 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
+import { Animated } from 'react-native';
 
 export const DefaultText = styled.Text`
   color: ${({ theme }) => theme.colors.black};
@@ -19,11 +20,19 @@ export const FormHeaderText = styled(DefaultText)`
   font-family: ${({ theme }) => theme.fonts.families.primaryMedium};
 `;
 
-export const FormLabel = styled(DefaultText)`
+const formLabelStyles = css`
   color: ${({ theme }) => theme.colors.gray};
   font-family: ${({ theme }) => theme.fonts.families.primaryLight};
   font-size: ${({ theme }) => theme.fonts.sizes.sm}px;
   text-transform: capitalize;
+`;
+
+export const FormLabel = styled(DefaultText)`
+  ${formLabelStyles}
+`;
+
+export const AnimatedFormLabel = styled(Animated.Text)`
+  ${formLabelStyles}
 `;
 
 export const FormFieldAdditionalLabel = styled(FormLabel)`
