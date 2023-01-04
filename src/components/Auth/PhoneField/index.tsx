@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import {
-  AuthPhoneFieldContainer,
+  FormItemContainer,
   FormLabel,
   AuthPhoneFieldInputContainer,
   AuthCountryCodeDisplayButton,
@@ -34,7 +34,7 @@ export const AuthPhoneField: FC<Props> = ({
     navigation.navigate(NavigationAuthName.COUNTRY_CODE_SELECTION);
 
   return (
-    <AuthPhoneFieldContainer>
+    <FormItemContainer>
       <FormLabel>Phone Number</FormLabel>
       <AuthPhoneFieldInputContainer>
         <AuthCountryCodeDisplayButton
@@ -62,6 +62,6 @@ export const AuthPhoneField: FC<Props> = ({
           editable={!disabled}
         />
       </AuthPhoneFieldInputContainer>
-    </AuthPhoneFieldContainer>
+    </FormItemContainer>
   );
 };

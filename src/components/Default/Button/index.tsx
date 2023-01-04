@@ -23,7 +23,7 @@ export const AuthCountryCodeDisplayButton = styled.Pressable`
   justify-content: center;
   flex-direction: row;
   width: ${({ theme }) => theme.sizes['26xl']}px;
-  padding: ${({ theme }) => theme.sizes.lg}px;
+  height: 100%;
   border-width: ${({ theme }) => theme.sizes.sm / 4}px;
   border-color: ${({ theme }) => theme.colors.polar};
   border-radius: ${({ theme }) => theme.sizes.lg}px;

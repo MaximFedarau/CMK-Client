@@ -27,13 +27,13 @@ export const FormContentContainer = styled(Container)`
   padding-vertical: ${({ theme }) => theme.sizes['12xl']}px;
 `;
 
-export const FormFieldContainer = styled(Container)`
+export const FormItemContainer = styled(Container)`
   flex: 0;
   margin-top: ${({ theme }) => theme.sizes['7xl']}px;
 `;
 
 export const FormFieldInputContainer = styled(Container)`
-  height: ${({ theme }) => theme.sizes['10xl']}px;
+  height: ${({ theme }) => theme.sizes['11xl']}px;
   flex-direction: row;
   border-bottom-width: ${({ theme }) => theme.sizes.sm / 4}px;
   border-bottom-color: ${({ theme }) => theme.colors.polar};
@@ -44,11 +44,6 @@ export const AnimatedFormLabelContainer = styled(Animated.View)`
   z-index: 1;
 `;
 
-export const AuthFormButtonsContainer = styled(Container)`
-  flex: 0;
-  margin-top: ${({ theme }) => theme.sizes['7xl']}px;
-`;
-
 export const AuthFormButtonsTextContainer = styled(Container)`
   flex: 0;
   flex-direction: row;
@@ -56,13 +51,9 @@ export const AuthFormButtonsTextContainer = styled(Container)`
   margin-top: ${({ theme }) => theme.sizes['4xl']}px;
 `;
 
-export const AuthPhoneFieldContainer = styled(Container)`
-  flex: 0;
-  margin-top: ${({ theme }) => theme.sizes['7xl']}px;
-`;
-
 export const AuthPhoneFieldInputContainer = styled(Container)`
   flex-direction: row;
+  height: ${({ theme }) => theme.sizes['11xl']}px;
   margin-top: ${({ theme }) => theme.sizes.lg}px;
 `;
 
@@ -73,4 +64,10 @@ export const ModalContentContainer = styled(Container)`
   padding: ${({ theme }) => theme.sizes['2xl']}px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.sizes.sm}px;
+`;
+
+export const AuthOTPFieldInputContainer = styled(Container)`
+  height: ${({ theme }) => theme.sizes['11xl']}px;
+  flex-direction: row;
+  margin-top: ${({ theme }) => theme.sizes.lg}px;
 `;

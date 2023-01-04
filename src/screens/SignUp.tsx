@@ -12,6 +12,7 @@ import {
   AuthPhoneField,
   AuthFormButtons,
   Modal,
+  AuthOTPField,
   FormField,
 } from '@components';
 import { countryIdSelector } from '@store/countryId';
@@ -45,6 +46,9 @@ export const SignUp: FC = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [modalParams, setModalParams] = useState(modalInitialState);
   const [showSignUpSecondStep, setShowSignUpSecondStep] = useState(false);
+  const [oneTimePassword, setOneTimePassword] = React.useState<string[]>(
+    new Array(4).fill(''),
+  );
 
   const onCloseModal = () => setModalParams(modalInitialState);
 
@@ -84,6 +88,10 @@ export const SignUp: FC = () => {
             />
             {showSignUpSecondStep && (
               <>
+                <AuthOTPField
+                  value={oneTimePassword}
+                  onChange={setOneTimePassword}
+                />
                 <FormField
                   value={name}
                   labelText="Your Name"

@@ -25,3 +25,15 @@ export const AuthPhoneNumberInput = styled(DefaultInput)`
   font-size: ${({ theme }) => theme.fonts.sizes.lg}px;
   font-family: ${({ theme }) => theme.fonts.families.primary};
 `;
+
+export const OTPFieldInput = styled(DefaultInput)<{ focused: boolean }>`
+  aspect-ratio: 1;
+  height: 100%;
+  margin-right: ${({ theme }) => theme.sizes['2xl']}px;
+  border-width: ${({ theme }) => theme.sizes.sm / 4}px;
+  border-color: ${({ theme, focused }) =>
+    focused ? theme.colors.blue : theme.colors.polar};
+  border-radius: ${({ theme }) => theme.sizes.md}px;
+  font-size: ${({ theme }) => theme.fonts.sizes.lg}px;
+  font-family: ${({ theme }) => theme.fonts.families.primarySemiBold};
+`;

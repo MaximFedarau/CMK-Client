@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import {
   SubmitButton,
   SubmitButtonText,
-  AuthFormButtonsContainer,
+  FormItemContainer,
   AuthFormButtonsTextContainer,
   FormLabel,
   AuthFormButtonsNavigationText,
@@ -45,7 +45,7 @@ export const AuthFormButtons: FC<Props> = ({ children, onSubmit, type }) => {
   const navigationHandler = () => navigation.replace(link);
 
   return (
-    <AuthFormButtonsContainer>
+    <FormItemContainer>
       <SubmitButton activeOpacity={0.8} onPress={onSubmit}>
         <SubmitButtonText>{children}</SubmitButtonText>
       </SubmitButton>
@@ -55,6 +55,6 @@ export const AuthFormButtons: FC<Props> = ({ children, onSubmit, type }) => {
           {linkText}
         </AuthFormButtonsNavigationText>
       </AuthFormButtonsTextContainer>
-    </AuthFormButtonsContainer>
+    </FormItemContainer>
   );
 };

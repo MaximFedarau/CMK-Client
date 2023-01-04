@@ -7,7 +7,7 @@ import {
   AnimatedFormLabel,
   FormFieldAdditionalLabel,
   FormFieldInput,
-  FormFieldContainer,
+  FormItemContainer,
   FormFieldInputContainer,
   SecureTextButton,
 } from '@components';
@@ -69,7 +69,7 @@ export const FormField: FC<Props> = ({
   });
 
   return (
-    <FormFieldContainer>
+    <FormItemContainer>
       <AnimatedFormLabelContainer
         pointerEvents="none"
         style={{ top: labelTopPosition }}
@@ -105,6 +105,6 @@ export const FormField: FC<Props> = ({
           {additionalLabelText}
         </FormFieldAdditionalLabel>
       )}
-    </FormFieldContainer>
+    </FormItemContainer>
   );
 };
