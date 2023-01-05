@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { Formik } from 'formik';
+import React, { FC, useState } from 'react';
+import { Formik, FormikErrors } from 'formik';
 
 import {
   ContentScrollContainer,
@@ -8,7 +8,11 @@ import {
   FormHeaderText,
   FormField,
   AuthFormButtons,
+  Modal,
+  TextHighlighter,
+  ModalProps,
 } from '@components';
+import { logInSchema } from '@constants';
 import { NavigationAuthName } from '@types';
 
 interface InitalValues {
@@ -17,22 +21,55 @@ interface InitalValues {
 }
 
 export const LogIn: FC = () => {
+  const modalInitialState: ModalProps = {
+    visible: false,
+    title: '',
+    children: '',
+    closeButtonText: 'OK',
+  };
   const initialValues: InitalValues = {
     email: '',
     password: '',
   };
 
-  const restorePassword = () => {
-    console.log('Restore password!');
-  };
+  const [modalParams, setModalParams] = useState(modalInitialState);
 
-  const onSubmit = (values: InitalValues) => {
-    console.log(values);
-  };
+  const onCloseModal = () => setModalParams(modalInitialState);
+
+  const restorePassword = () => console.log('Restore password!');
+
+  const handleErrors = (errors: FormikErrors<InitalValues>) =>
+    setModalParams({
+      visible: true,
+      title: 'Invalid Data',
+      children: (
+        <>
+          {Object.entries(errors).map(([fieldName, text]) => (
+            <TextHighlighter keyword={fieldName} key={fieldName}>
+              {text}
+            </TextHighlighter>
+          ))}
+        </>
+      ),
+      closeButtonText: 'OK',
+    });
+
+  const onSubmit = (values: InitalValues) => console.log(values);
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      {({ values: { email, password }, handleChange, handleSubmit }) => (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={logInSchema}
+      validateOnMount
+    >
+      {({
+        values: { email, password },
+        errors,
+        handleChange,
+        handleSubmit,
+        isValid,
+      }) => (
         <ContentScrollContainer>
           <Logo />
           <FormContentContainer>
@@ -56,10 +93,11 @@ export const LogIn: FC = () => {
             />
             <AuthFormButtons
               type={NavigationAuthName.LOG_IN}
-              onSubmit={handleSubmit}
+              onSubmit={isValid ? handleSubmit : () => handleErrors(errors)}
             >
               Log In
             </AuthFormButtons>
+            <Modal {...modalParams} onRequestClose={onCloseModal} />
           </FormContentContainer>
         </ContentScrollContainer>
       )}

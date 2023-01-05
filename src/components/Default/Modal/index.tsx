@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { ModalProps, Modal as RNModal } from 'react-native';
+import React, { FC, ReactNode } from 'react';
+import { ModalProps as RNModalProps, Modal as RNModal } from 'react-native';
 
 import {
   ModalContainerButton,
@@ -12,13 +12,13 @@ import {
 
 import { styles } from './styles';
 
-interface Props extends ModalProps {
+export interface ModalProps extends RNModalProps {
   title: string;
-  children: string;
+  children: ReactNode;
   closeButtonText: string;
 }
 
-export const Modal: FC<Props> = ({
+export const Modal: FC<ModalProps> = ({
   title,
   children,
   closeButtonText,
