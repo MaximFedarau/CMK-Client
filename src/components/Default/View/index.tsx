@@ -44,6 +44,13 @@ export const AnimatedFormLabelContainer = styled(Animated.View)`
   z-index: 1;
 `;
 
+export const AnimatedSecureTextButtonContainer = styled(Animated.View)`
+  align-self: center;
+  width: ${({ theme }) => theme.sizes['3xl']}px;
+  height: ${({ theme }) => theme.sizes['3xl']}px;
+  border-radius: ${({ theme }) => theme.sizes['3xl'] / 2}px;
+`;
+
 export const AuthFormButtonsTextContainer = styled(Container)`
   flex: 0;
   flex-direction: row;

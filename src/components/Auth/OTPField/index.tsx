@@ -28,10 +28,10 @@ export const AuthOTPField: FC<Props> = ({
   disabled = false,
   allowPasting = false,
 }) => {
-  const INPUTS_QUANTITY = value.length;
+  const inputsQuantity = value.length;
   const inputRefs = useRef<TextInput[]>([]); // handle inputs
   const [focusStates, setFocusStates] = useState<boolean[]>(
-    new Array(INPUTS_QUANTITY).fill(false),
+    new Array(inputsQuantity).fill(false),
   ); // handle inputs focused/unfocused state
 
   const handleChange = (text: string, index: number) => {
@@ -47,8 +47,8 @@ export const AuthOTPField: FC<Props> = ({
       if (value[index] !== '') text = text.slice(1); // if current TextInput has text, then we want to replace it, so we "cut off" the old text
 
       const newValue = (
-        text.length > INPUTS_QUANTITY
-          ? text.slice(0, INPUTS_QUANTITY - index)
+        text.length > inputsQuantity
+          ? text.slice(0, inputsQuantity - index)
           : text
       ).split('');
 
@@ -59,8 +59,8 @@ export const AuthOTPField: FC<Props> = ({
 
       onChange(modifiedValue);
       return inputRefs?.current[
-        index + newValue.length > INPUTS_QUANTITY - 1
-          ? INPUTS_QUANTITY - 1
+        index + newValue.length > inputsQuantity - 1
+          ? inputsQuantity - 1
           : index + newValue.length
       ]?.focus(); // make next TextInput focused
     }

@@ -35,10 +35,13 @@ export const AnimatedFormLabel = styled(Animated.Text)`
   ${formLabelStyles}
 `;
 
-export const FormFieldAdditionalLabel = styled(FormLabel)`
-  text-align: right;
+export const FormFieldAdditionalLabel = styled(AnimatedFormLabel)`
+  align-self: flex-end;
   text-transform: none;
-  margin-top: ${({ theme }) => theme.sizes.md}px;
+  margin-top: ${({ theme }) => theme.sizes.sm}px;
+  padding-vertical: ${({ theme }) => theme.sizes.sm / 2}px;
+  border-radius: ${({ theme }) => theme.sizes.sm / 2}px;
+  overflow: hidden;
 `;
 
 export const SubmitButtonText = styled(DefaultText)`
