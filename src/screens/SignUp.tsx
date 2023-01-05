@@ -1,8 +1,11 @@
-import React, { FC, useState } from 'react';
-import { Text } from 'react-native';
+import React, { FC, useState, ReactNode } from 'react';
 import { useSelector } from 'react-redux';
-import { isValidPhoneNumber } from 'libphonenumber-js';
-import { Formik } from 'formik';
+import {
+  isValidPhoneNumber,
+  validatePhoneNumberLength,
+  ValidatePhoneNumberLengthResult,
+} from 'libphonenumber-js';
+import { Formik, FormikErrors } from 'formik';
 
 import {
   ContentScrollContainer,
@@ -12,11 +15,13 @@ import {
   AuthPhoneField,
   AuthFormButtons,
   Modal,
+  ModalProps,
+  TextHighlighter,
   AuthOTPField,
   FormField,
 } from '@components';
 import { countryIdSelector } from '@store/countryId';
-import { COUNTRIES_INFO } from '@constants';
+import { COUNTRIES_INFO, signUpSchema } from '@constants';
 import { NavigationAuthName } from '@types';
 
 interface InitialValues {
@@ -30,7 +35,7 @@ export const SignUp: FC = () => {
   const countryId = useSelector(countryIdSelector);
   const countryCode = COUNTRIES_INFO[countryId].code;
 
-  const modalInitialState = {
+  const modalInitialState: ModalProps = {
     visible: false,
     title: '',
     children: '',
@@ -50,31 +55,92 @@ export const SignUp: FC = () => {
     new Array(4).fill(''),
   );
 
+  const showModal = (title: string, children: ReactNode) =>
+    setModalParams({
+      visible: true,
+      title,
+      children,
+      closeButtonText: 'OK',
+    });
   const onCloseModal = () => setModalParams(modalInitialState);
 
+  const transformLengthValidityResult = (
+    result?: ValidatePhoneNumberLengthResult,
+  ) => {
+    if (!result) return result;
+    const readableResult = result.replaceAll('_', ' ');
+    return readableResult[0] + readableResult.slice(1).toLowerCase();
+  };
   const onSignUpFirstStepSubmit = () => {
     const tel = countryCode + phoneNumber.trim();
     const phoneNumberValidity = isValidPhoneNumber(tel, countryId);
-    if (!phoneNumberValidity)
-      setModalParams({
-        visible: true,
-        title: 'Sorry',
-        children: 'Invalid phone number. Check it out and try again.',
-        closeButtonText: 'OK',
-      });
+    if (!phoneNumberValidity || !new RegExp(/^\d+$/).test(phoneNumber.trim()))
+      showModal(
+        'Invalid Phone Number',
+        `${
+          transformLengthValidityResult(
+            validatePhoneNumberLength(tel, countryId),
+          ) || 'Invalid format'
+        }. Check it out and try again.`,
+      );
     else setShowSignUpSecondStep(true);
   };
 
+  const validateOneTimePassword = () => {
+    const code = oneTimePassword.join('');
+    if (code.length < oneTimePassword.length) {
+      showModal(
+        'Invalid Verification Code',
+        'Enter the complete verification code.',
+      );
+      return false;
+    }
+
+    if (!new RegExp(/^\d+$/).test(code)) {
+      showModal(
+        'Invalid Verification Code',
+        'Your data contains invalid characters.',
+      );
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleErrors = (errors: FormikErrors<InitialValues>) => {
+    if (!validateOneTimePassword()) return;
+    showModal(
+      'Invalid Data',
+      <>
+        {Object.entries(errors).map(([fieldName, text]) => (
+          <TextHighlighter keyword={fieldName} key={fieldName}>
+            {text}
+          </TextHighlighter>
+        ))}
+      </>,
+    );
+  };
+
   const onSignUpSecondStepSubmit = (values: InitialValues) => {
-    console.log(values);
+    if (!validateOneTimePassword()) return;
+    const code = oneTimePassword.join(''),
+      tel = countryCode + phoneNumber.trim();
+    console.log(tel, code, values);
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSignUpSecondStepSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSignUpSecondStepSubmit}
+      validationSchema={signUpSchema}
+      validateOnMount
+    >
       {({
         values: { name, email, password, confirmPassword },
+        errors,
         handleChange,
         handleSubmit,
+        isValid,
       }) => (
         <ContentScrollContainer>
           <Logo />
@@ -125,7 +191,11 @@ export const SignUp: FC = () => {
             <AuthFormButtons
               type={NavigationAuthName.SIGN_UP}
               onSubmit={
-                showSignUpSecondStep ? handleSubmit : onSignUpFirstStepSubmit
+                showSignUpSecondStep
+                  ? isValid
+                    ? handleSubmit
+                    : () => handleErrors(errors)
+                  : onSignUpFirstStepSubmit
               }
             >
               Next

@@ -25,7 +25,7 @@ export const LogIn: FC = () => {
     visible: false,
     title: '',
     children: '',
-    closeButtonText: 'OK',
+    closeButtonText: '',
   };
   const initialValues: InitalValues = {
     email: '',
