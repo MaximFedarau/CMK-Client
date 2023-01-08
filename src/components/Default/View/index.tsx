@@ -55,7 +55,8 @@ export const AuthFormButtonsTextContainer = styled(Container)`
   flex: 0;
   flex-direction: row;
   justify-content: center;
-  margin-top: ${({ theme }) => theme.sizes['4xl']}px;
+  align-items: center;
+  margin-top: ${({ theme }) => theme.sizes['3xl']}px;
 `;
 
 export const AuthPhoneFieldInputContainer = styled(Container)`

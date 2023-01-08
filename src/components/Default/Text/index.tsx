@@ -4,6 +4,7 @@ import { Animated } from 'react-native';
 export const DefaultText = styled.Text`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fonts.sizes.base}px;
+  include-font-padding: false;
 `;
 
 export const LogoText = styled(DefaultText)`
@@ -33,15 +34,7 @@ export const FormLabel = styled(DefaultText)`
 
 export const AnimatedFormLabel = styled(Animated.Text)`
   ${formLabelStyles}
-`;
-
-export const FormFieldAdditionalLabel = styled(AnimatedFormLabel)`
-  align-self: flex-end;
-  text-transform: none;
-  margin-top: ${({ theme }) => theme.sizes.sm}px;
-  padding-vertical: ${({ theme }) => theme.sizes.sm / 2}px;
-  border-radius: ${({ theme }) => theme.sizes.sm / 2}px;
-  overflow: hidden;
+  include-font-padding: false;
 `;
 
 export const SubmitButtonText = styled(DefaultText)`

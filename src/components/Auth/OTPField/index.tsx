@@ -3,7 +3,6 @@ import {
   NativeSyntheticEvent,
   TextInput,
   TextInputKeyPressEventData,
-  View,
 } from 'react-native';
 
 import {
@@ -12,8 +11,6 @@ import {
   AuthOTPFieldInputContainer,
   OTPFieldInput,
 } from '@components';
-
-import { styles } from './styles';
 
 interface Props {
   value: string[];
@@ -122,7 +119,6 @@ export const AuthOTPField: FC<Props> = ({
             textContentType="oneTimeCode"
             autoComplete="sms-otp"
             textAlign="center"
-            style={styles.oneTimePasswordText}
             onChangeText={(text) => handleChange(text, index)}
             onKeyPress={(event) => handleBackspace(event, index)}
             onFocus={() => handleFocus(index, false)}

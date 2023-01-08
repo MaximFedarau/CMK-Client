@@ -8,9 +8,8 @@ import {
   AuthCountryCodeNumberText,
 } from '@components';
 import { setCountryId } from '@store/countryId';
+import { COLORS } from '@constants';
 import { Countries, CountryInfo, NavigationProps } from '@types';
-
-import { styles } from './styles';
 
 interface Props extends CountryInfo {
   countryId: Countries;
@@ -27,15 +26,11 @@ export const AuthCountryCode: FC<Props> = ({ countryId, name, code }) => {
 
   return (
     <AuthCountryCodeSelectButton
-      style={({ pressed }) => [pressed ? styles.pressed : {}]}
+      style={({ pressed }) => pressed && { backgroundColor: COLORS.polar }}
       onPress={selectCountryId}
     >
-      <AuthCountryCodeLocationText style={styles.text}>
-        {name}
-      </AuthCountryCodeLocationText>
-      <AuthCountryCodeNumberText style={styles.text}>
-        {code}
-      </AuthCountryCodeNumberText>
+      <AuthCountryCodeLocationText>{name}</AuthCountryCodeLocationText>
+      <AuthCountryCodeNumberText>{code}</AuthCountryCodeNumberText>
     </AuthCountryCodeSelectButton>
   );
 };

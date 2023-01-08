@@ -7,8 +7,10 @@ import {
   FormItemContainer,
   AuthFormButtonsTextContainer,
   FormLabel,
+  AuthFormButtonsNavigationButton,
   AuthFormButtonsNavigationText,
 } from '@components';
+import { COLORS } from '@constants';
 import { NavigationAuthName, NavigationProps } from '@types';
 
 type AuthName = NavigationAuthName.LOG_IN | NavigationAuthName.SIGN_UP;
@@ -51,9 +53,14 @@ export const AuthFormButtons: FC<Props> = ({ children, onSubmit, type }) => {
       </SubmitButton>
       <AuthFormButtonsTextContainer>
         <FormLabel>{infoText}</FormLabel>
-        <AuthFormButtonsNavigationText onPress={navigationHandler}>
-          {linkText}
-        </AuthFormButtonsNavigationText>
+        <AuthFormButtonsNavigationButton
+          style={({ pressed }) => pressed && { backgroundColor: COLORS.polar }}
+          onPress={navigationHandler}
+        >
+          <AuthFormButtonsNavigationText>
+            {linkText}
+          </AuthFormButtonsNavigationText>
+        </AuthFormButtonsNavigationButton>
       </AuthFormButtonsTextContainer>
     </FormItemContainer>
   );

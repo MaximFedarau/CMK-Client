@@ -1,9 +1,21 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 export const SecureTextButton = styled.Pressable`
   padding: ${({ theme }) => theme.sizes.sm / 2}px;
   background-color: ${({ theme }) => theme.colors.polar};
   border-radius: ${({ theme }) => theme.sizes['3xl'] / 2}px;
+`;
+
+const highlightTextButtonStyles = css`
+  border-radius: ${({ theme }) => theme.sizes.sm / 2}px;
+  padding-vertical: ${({ theme }) => theme.sizes.sm / 2}px;
+  overflow: hidden;
+`;
+
+export const AdditionalLabelButton = styled.Pressable`
+  ${highlightTextButtonStyles}
+  margin-top: ${({ theme }) => theme.sizes.sm}px;
+  align-self: flex-end;
 `;
 
 export const SubmitButton = styled.TouchableOpacity`
@@ -13,6 +25,10 @@ export const SubmitButton = styled.TouchableOpacity`
   border-radius: ${({ theme }) => theme.sizes['2xl']}px;
   justify-content: center;
   align-items: center;
+`;
+
+export const AuthFormButtonsNavigationButton = styled.Pressable`
+  ${highlightTextButtonStyles}
 `;
 
 export const AuthCountryCodeDisplayButton = styled.Pressable`
@@ -46,6 +62,8 @@ export const ModalContainerButton = styled.Pressable`
   background-color: rgba(0, 0, 0, 0.32);
 `;
 
-export const ModalCloseButton = styled.TouchableOpacity`
+export const ModalCloseButton = styled.Pressable`
+  ${highlightTextButtonStyles}
+  padding-horizontal: ${({ theme }) => theme.sizes.sm / 2}px;
   align-self: flex-end;
 `;

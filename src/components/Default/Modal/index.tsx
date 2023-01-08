@@ -9,8 +9,7 @@ import {
   ModalContentText,
   ModalCloseButtonText,
 } from '@components';
-
-import { styles } from './styles';
+import { COLORS } from '@constants';
 
 export interface ModalProps extends RNModalProps {
   title: string;
@@ -31,12 +30,13 @@ export const Modal: FC<ModalProps> = ({
         onTouchEnd={(e) => e.stopPropagation()}
       >
         {/* onTouchEnd & onStartShouldSetResponder are here to allow user to click anywhere outside of the Modal to close it, but these events don't allow to click Modal itself. */}
-        <ModalTitle style={styles.text}>{title}</ModalTitle>
-        <ModalContentText style={styles.text}>{children}</ModalContentText>
-        <ModalCloseButton activeOpacity={0.8} onPress={props.onRequestClose}>
-          <ModalCloseButtonText style={styles.text}>
-            {closeButtonText}
-          </ModalCloseButtonText>
+        <ModalTitle>{title}</ModalTitle>
+        <ModalContentText>{children}</ModalContentText>
+        <ModalCloseButton
+          style={({ pressed }) => pressed && { backgroundColor: COLORS.polar }}
+          onPress={props.onRequestClose}
+        >
+          <ModalCloseButtonText>{closeButtonText}</ModalCloseButtonText>
         </ModalCloseButton>
       </ModalContentContainer>
     </ModalContainerButton>

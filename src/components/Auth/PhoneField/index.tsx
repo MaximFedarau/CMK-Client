@@ -42,10 +42,7 @@ export const AuthPhoneField: FC<Props> = ({
           onPress={selectCountryCode}
         >
           <AuthCountryCodeDisplayButtonText
-            style={[
-              styles.countryCodeButtonText,
-              disabled && styles.disabledText,
-            ]}
+            style={disabled && { color: COLORS.gray }}
           >
             {countryCode}
           </AuthCountryCodeDisplayButtonText>
@@ -56,7 +53,6 @@ export const AuthPhoneField: FC<Props> = ({
         </AuthCountryCodeDisplayButton>
         <AuthPhoneNumberInput
           keyboardType="number-pad"
-          style={styles.phoneNumberInput}
           value={phoneNumber}
           onChangeText={onPhoneNumberChange}
           editable={!disabled}
