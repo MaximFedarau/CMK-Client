@@ -1,4 +1,5 @@
 import React, { FC, useState, ReactNode } from 'react';
+import { LayoutAnimation, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import {
   isValidPhoneNumber,
@@ -21,7 +22,7 @@ import {
   FormField,
 } from '@components';
 import { countryIdSelector } from '@store/countryId';
-import { COUNTRIES_INFO, signUpSchema } from '@constants';
+import { COUNTRIES_INFO, signUpSchema, ANIMATION_SPEED } from '@constants';
 import { NavigationAuthName } from '@types';
 
 interface InitialValues {
@@ -83,7 +84,16 @@ export const SignUp: FC = () => {
           ) || 'Invalid format'
         }. Check it out and try again.`,
       );
-    else setShowSignUpSecondStep(true);
+    else {
+      LayoutAnimation.configureNext(
+        LayoutAnimation.create(
+          ANIMATION_SPEED.slow,
+          'easeInEaseOut',
+          'opacity',
+        ),
+      );
+      setShowSignUpSecondStep(true);
+    }
   };
 
   const validateOneTimePassword = () => {
@@ -145,13 +155,16 @@ export const SignUp: FC = () => {
         <ContentScrollContainer>
           <Logo />
           <FormContentContainer>
-            <FormHeaderText>Sign Up To Woorkroom</FormHeaderText>
-            <AuthPhoneField
-              countryCode={countryCode}
-              phoneNumber={phoneNumber}
-              onPhoneNumberChange={setPhoneNumber}
-              disabled={showSignUpSecondStep}
-            />
+            {/* Wrap in <View> to make all components go up when LayoutAnimation is active */}
+            <View>
+              <FormHeaderText>Sign Up To Woorkroom</FormHeaderText>
+              <AuthPhoneField
+                countryCode={countryCode}
+                phoneNumber={phoneNumber}
+                onPhoneNumberChange={setPhoneNumber}
+                disabled={showSignUpSecondStep}
+              />
+            </View>
             {showSignUpSecondStep && (
               <>
                 <AuthOTPField

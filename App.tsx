@@ -1,5 +1,5 @@
-import React, { useEffect, FC } from 'react';
-import { StatusBar } from 'react-native';
+import React, { FC } from 'react';
+import { StatusBar, Platform, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 import { ThemeProvider } from 'styled-components/native';
@@ -10,20 +10,27 @@ import Navigator from './src';
 import { store, persistor } from '@store';
 import { COLORS, THEME } from '@constants';
 
-const App: FC = () => {
-  useEffect(() => {
-    SplashScreen.hide();
-  }, []);
+if (
+  Platform.OS === 'android' &&
+  UIManager.setLayoutAnimationEnabledExperimental
+)
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 
+const App: FC = () => {
   return (
     <>
       <StatusBar backgroundColor={COLORS.white} barStyle="dark-content" />
       <NavigationContainer>
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <ThemeProvider theme={THEME}>
-              <Navigator />
-            </ThemeProvider>
+          <PersistGate persistor={persistor}>
+            {(bootstrapped) => {
+              if (bootstrapped) SplashScreen.hide(); // if redux-persist finished loading, then render app
+              return (
+                <ThemeProvider theme={THEME}>
+                  <Navigator />
+                </ThemeProvider>
+              );
+            }}
           </PersistGate>
         </Provider>
       </NavigationContainer>

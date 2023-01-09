@@ -48,7 +48,10 @@ export const AuthFormButtons: FC<Props> = ({ children, onSubmit, type }) => {
 
   return (
     <FormItemContainer>
-      <SubmitButton activeOpacity={0.8} onPress={onSubmit}>
+      <SubmitButton
+        style={({ pressed }) => pressed && { opacity: 0.8 }}
+        onPress={onSubmit}
+      >
         <SubmitButtonText>{children}</SubmitButtonText>
       </SubmitButton>
       <AuthFormButtonsTextContainer>

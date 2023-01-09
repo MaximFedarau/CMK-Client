@@ -18,7 +18,7 @@ export const AdditionalLabelButton = styled.Pressable`
   align-self: flex-end;
 `;
 
-export const SubmitButton = styled.TouchableOpacity`
+export const SubmitButton = styled.Pressable`
   width: 100%;
   height: ${({ theme }) => theme.sizes['12xl']}px;
   background-color: ${({ theme }) => theme.colors.blue};

@@ -14,7 +14,10 @@ export const BackButton: FC<HeaderBackButtonProps> = ({ canGoBack }) => {
   };
 
   return (
-    <BackButtonPressable onPress={goBackHandler}>
+    <BackButtonPressable
+      style={({ pressed }) => pressed && { opacity: 0.8 }}
+      onPress={goBackHandler}
+    >
       <ArrowLeft />
     </BackButtonPressable>
   );

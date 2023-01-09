@@ -13,7 +13,7 @@ import {
   FormLabel,
   AdditionalLabelButton,
 } from '@components';
-import { SIZES, FONTS, COLORS } from '@constants';
+import { SIZES, FONTS, COLORS, ANIMATION_SPEED } from '@constants';
 import EyeIcon from '@assets/images/eye.svg';
 import ClosedEyeIcon from '@assets/images/closedEye.svg';
 
@@ -83,11 +83,18 @@ export const FormField: FC<Props> = ({
         <FormFieldInput
           {...props}
           secureTextEntry={secureText}
-          onFocus={() => manageAnimation(animationValue.label, true, 250)}
+          onFocus={() =>
+            manageAnimation(animationValue.label, true, ANIMATION_SPEED.medium)
+          }
           onBlur={
             props.value
               ? undefined
-              : () => manageAnimation(animationValue.label, false, 250)
+              : () =>
+                  manageAnimation(
+                    animationValue.label,
+                    false,
+                    ANIMATION_SPEED.medium,
+                  )
           }
           style={{
             width: isPasswordInput
@@ -102,10 +109,18 @@ export const FormField: FC<Props> = ({
             <SecureTextButton
               onPress={changeSecureText}
               onPressIn={() =>
-                manageAnimation(animationValue.secureTextButton, true, 125)
+                manageAnimation(
+                  animationValue.secureTextButton,
+                  true,
+                  ANIMATION_SPEED.fast,
+                )
               }
               onPressOut={() =>
-                manageAnimation(animationValue.secureTextButton, false, 125)
+                manageAnimation(
+                  animationValue.secureTextButton,
+                  false,
+                  ANIMATION_SPEED.fast,
+                )
               }
             >
               {secureText ? <ClosedEyeIcon /> : <EyeIcon />}
