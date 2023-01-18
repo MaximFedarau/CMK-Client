@@ -15,6 +15,10 @@ export const SafeAreaContainer = styled.SafeAreaView`
   flex: 1;
 `;
 
+export const KeyboardAvoidingContainer = styled.KeyboardAvoidingView`
+  flex-grow: 1;
+`;
+
 export const LogoContainer = styled(Container)`
   flex: 0;
   padding-top: ${({ theme }) => theme.sizes['2xl']}px;

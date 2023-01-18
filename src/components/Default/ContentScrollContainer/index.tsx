@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
-import { ScrollViewProps } from 'react-native';
+import { ScrollViewProps, Platform } from 'react-native';
 
-import { SafeAreaContainer, ScrollContainer } from '@components';
+import {
+  SafeAreaContainer,
+  ScrollContainer,
+  KeyboardAvoidingContainer,
+} from '@components';
 
 import { styles } from './styles';
 
@@ -11,14 +15,18 @@ export const ContentScrollContainer: FC<ScrollViewProps> = ({
 }) => {
   return (
     <SafeAreaContainer>
-      <ScrollContainer
-        {...props}
-        bounces={false}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.contentContainer}
+      <KeyboardAvoidingContainer
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        {children}
-      </ScrollContainer>
+        <ScrollContainer
+          {...props}
+          bounces={false}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.contentContainer}
+        >
+          {children}
+        </ScrollContainer>
+      </KeyboardAvoidingContainer>
     </SafeAreaContainer>
   );
 };

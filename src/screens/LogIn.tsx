@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { View } from 'react-native';
 import { Formik, FormikErrors } from 'formik';
 
 import {
@@ -73,30 +74,33 @@ export const LogIn: FC = () => {
         <ContentScrollContainer>
           <Logo />
           <FormContentContainer>
-            <FormHeaderText>Log In To Woorkroom</FormHeaderText>
-            <FormField
-              value={email}
-              onChangeText={handleChange('email')}
-              labelText="Your Email"
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
-            <FormField
-              value={password}
-              onChangeText={handleChange('password')}
-              labelText="Password"
-              additionalLabelText="Forgot password?"
-              onAdditionalLabelPress={restorePassword}
-              secureTextEntry
-              isPasswordInput
-              autoCapitalize="none"
-            />
-            <AuthFormButtons
-              type={NavigationAuthName.LOG_IN}
-              onSubmit={isValid ? handleSubmit : () => handleErrors(errors)}
-            >
-              Log In
-            </AuthFormButtons>
+            {/* Wrap in <View> to make all components go up when KeyboardAvoidingView is active */}
+            <View>
+              <FormHeaderText>Log In To Woorkroom</FormHeaderText>
+              <FormField
+                value={email}
+                onChangeText={handleChange('email')}
+                labelText="Your Email"
+                keyboardType="email-address"
+                autoCapitalize="none"
+              />
+              <FormField
+                value={password}
+                onChangeText={handleChange('password')}
+                labelText="Password"
+                additionalLabelText="Forgot password?"
+                onAdditionalLabelPress={restorePassword}
+                secureTextEntry
+                isPasswordInput
+                autoCapitalize="none"
+              />
+              <AuthFormButtons
+                type={NavigationAuthName.LOG_IN}
+                onSubmit={isValid ? handleSubmit : () => handleErrors(errors)}
+              >
+                Log In
+              </AuthFormButtons>
+            </View>
             <Modal {...modalParams} onRequestClose={onCloseModal} />
           </FormContentContainer>
         </ContentScrollContainer>

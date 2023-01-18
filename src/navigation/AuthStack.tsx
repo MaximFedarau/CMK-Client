@@ -13,6 +13,7 @@ export const AuthStack: FC = () => (
     screenOptions={{
       headerShown: false,
       contentStyle: { backgroundColor: COLORS.white },
+      fullScreenGestureEnabled: true,
     }}
   >
     <Stack.Screen name={NavigationAuthName.LOG_IN} component={LogIn} />
