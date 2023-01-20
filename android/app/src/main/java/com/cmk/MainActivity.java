@@ -3,8 +3,19 @@ package com.cmk;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import org.devio.rn.splashscreen.SplashScreen;
+
+// for react-native-screens & react-native-splash-screen
+import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
+
+  // Need it for react-native-screens
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    SplashScreen.show(this, R.layout.launch_screen, true);
+    super.onCreate(null);
+  }
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
