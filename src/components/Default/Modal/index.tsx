@@ -23,7 +23,19 @@ export const Modal: FC<ModalProps> = ({
   closeButtonText,
   ...props
 }) => (
-  <RNModal animationType="fade" transparent statusBarTranslucent {...props}>
+  <RNModal
+    animationType="fade"
+    transparent
+    statusBarTranslucent
+    supportedOrientations={[
+      'landscape',
+      'landscape-left',
+      'landscape-right',
+      'portrait',
+      'portrait-upside-down',
+    ]}
+    {...props}
+  >
     <ModalContainerButton onPress={props.onRequestClose}>
       <ModalContentContainer
         onStartShouldSetResponder={() => true}

@@ -39,7 +39,9 @@ export const FormField: FC<Props> = ({
 
   const animationState = { start: 0, end: 1 };
   const animationValue = useRef({
-    label: new Animated.Value(animationState.start),
+    label: new Animated.Value(
+      props.value ? animationState.end : animationState.start,
+    ),
     secureTextButton: new Animated.Value(animationState.start),
   }).current;
 
